@@ -85,7 +85,7 @@ This retirement plan assumes savings for five years and is based on the 401k mas
 <p>&nbsp;</p>
 <hr>
     <h4 align="center">Assets</h4>
-This retirement plan assumes no savings and is based on the 401k master plan and $95k COL
+This retirement plan assumes no savings and is based on the 401k master plan and $95k COL. If the COL is $90K, the value of assests will remain above $0.
     <%= column_chart [ 
 	{ name: "Assets",  data: @plan2s.group(:age).sum(:assets) }, 
 	{ name: "COL",  data: @plan2s.group(:age).sum(:col) } ],
