@@ -1,0 +1,104 @@
+<h3>Matt's Financial Dashboard</h3>
+    <h4 align="center">Total Savings Over Time</h4>
+    <%= column_chart [ 
+	{ name: "Total Value", data: @savings.order(:transactiondate).group(:transactiondate).sum(:totalsavings) } ], 
+	library: { curveType: "function", colors: ["green"]},  
+	stacked:true, discrete:true, ytitle: "$s"
+
+%>
+    <h4 align="center">Retirement Value</h4>
+    <%= column_chart [ 
+	{ name: "Total Value", data: @savings.order(:transactiondate).group(:transactiondate).sum(:totalvalue) } ], 
+	library: { curveType: "function", colors: ["green"]},  
+	stacked:true, discrete:true, ytitle: "$s"
+
+%>
+    <h4 align="center">Transactions</h4>
+    <%= column_chart [ 
+	{ name: "Amount",  data: @savings.order(:transactiondate).group(:transactiondate).sum(:amount) } ], 
+	library: { curveType: "function", colors: ["green"]},  
+	stacked:true, discrete:true, ytitle: "$s"
+
+%>
+
+
+    <h4 align="center">Debt Payoff</h4>
+    <%= column_chart [ 
+	{ name: "HELOC",  data: @debts.order(:transactiondate).group(:transactiondate).sum(:heloc) },
+	{ name: "Escrow",  data: @debts.order(:transactiondate).group(:transactiondate).sum(:escrowdebt) },
+	{ name: "401k",  data: @debts.order(:transactiondate).group(:transactiondate).sum(:loanremaining) } ], 
+	library: { curveType: "function", colors: ["red", "blue", "orange"]},  
+	stacked:true, discrete:true, ytitle: "$s"
+
+%>
+
+    <h4 align="center">Assets</h4>
+    <%= column_chart [ 
+	{ name: "Assets",  data: @networth.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:assets) } ], 
+	library: { curveType: "function", colors: ["green"]},  
+	stacked:false, discrete:true, ytitle: "$s"
+
+%>
+    <h4 align="center">Debts</h4>
+    <%= column_chart [ 
+	{ name: "Debts",  data: @networth.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:debts) } ], 
+	library: { curveType: "function", colors: ["red"]},  
+	stacked:false, discrete:true, ytitle: "$s"
+
+%>
+    <h4 align="center">Net Worth</h4>
+    <%= column_chart [ 
+	{ name: "Net Worth",  data: @networth.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:networth) } ], 
+	library: { curveType: "function", colors: ["green"]},  
+	stacked:false, discrete:true, ytitle: "$s"
+
+%>
+
+    <h4 align="center">Investments</h4>
+    <%= column_chart [ 
+	{ name: "AON",  data: @accounts.order(:dateofrecord).limit(50).group(:dateofrecord).sum(:aonacct) },
+	{ name: "ESPP",  data: @accounts.order(:dateofrecord).limit(50).group(:dateofrecord).sum(:ssbacct) },
+	{ name: "Loan",  data: @accounts.order(:dateofrecord).limit(50).group(:dateofrecord).sum(:loanacct) } ], 
+	library: { curveType: "function", colors: ["green", "blue", "orange"]},  
+	stacked:true, discrete:true, ytitle: "$s"
+
+%>
+
+    <h4 align="center">Change</h4>
+    <%= column_chart [ 
+	{ name: "Daily Change",  data: @accounts.order(:dateofrecord).limit(50).group(:dateofrecord).sum(:change) } ], 
+	library: { curveType: "function", colors: ["black"]},  
+	stacked:true, discrete:true, ytitle: "$s"
+
+%>
+<h3>Retirement Plans</h3>
+This retirement plan assumes savings for five years and is based on the 401k master plan and $108k COL
+    <h4 align="center">Assets</h4>
+    <%= column_chart [ 
+	{ name: "Assets",  data: @plan1s.group(:age).sum(:assets) },
+	{ name: "COL",  data: @plan1s.group(:age).sum(:col) } ], 
+	library: { curveType: "function", colors: ["green"]},  
+	stacked:false, discrete:true, ytitle: "$s", xtitle: "Age"
+
+%>
+<p>&nbsp;</p>
+This retirement plan assumes no savings and is based on the 401k master plan and $95k COL
+    <h4 align="center">Assets</h4>
+    <%= column_chart [ 
+	{ name: "Assets",  data: @plan2s.group(:age).sum(:assets) }, 
+	{ name: "COL",  data: @plan2s.group(:age).sum(:col) } ],
+	library: { curveType: "function", colors: ["green"]},  
+	stacked:false, discrete:true, ytitle: "$s", xtitle: "Age"
+
+%>
+<p>&nbsp;</p>
+This retirement plan assumes savings and is based on the 401k pessimistic plan and $95k COL
+    <h4 align="center">Assets</h4>
+    <%= column_chart [ 
+	{ name: "Assets",  data: @plan3s.group(:age).sum(:assets) }, 
+	{ name: "COL",  data: @plan3s.group(:age).sum(:col) } ],
+	library: { curveType: "function", colors: ["green"]},  
+	stacked:false, discrete:true, ytitle: "$s", xtitle: "Age"
+
+%>
+

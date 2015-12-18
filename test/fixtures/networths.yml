@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dateofrecord: 2015-12-18 14:16:50
+  assets: 1.5
+  debts: 1.5
+  networth: 1.5
+  change: 1.5
+  changerate: 1.5
+
+two:
+  dateofrecord: 2015-12-18 14:16:50
+  assets: 1.5
+  debts: 1.5
+  networth: 1.5
+  change: 1.5
+  changerate: 1.5

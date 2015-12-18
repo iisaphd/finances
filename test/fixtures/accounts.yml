@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  dateofrecord: 2015-12-18 15:56:48
+  checkingacct: 1.5
+  escrowacct: 1.5
+  helocacct: 1.5
+  amexacct: 1.5
+  capitaloneacct: 1.5
+  escrowdebt: 1.5
+  aonacct: 1.5
+  ssbacct: 1.5
+  home: 1.5
+  loanacct: 1.5
+  assets: 1.5
+  debts: 1.5
+  networth: 1.5
+  change: 1.5
+  investments: 1.5
+
+two:
+  dateofrecord: 2015-12-18 15:56:48
+  checkingacct: 1.5
+  escrowacct: 1.5
+  helocacct: 1.5
+  amexacct: 1.5
+  capitaloneacct: 1.5
+  escrowdebt: 1.5
+  aonacct: 1.5
+  ssbacct: 1.5
+  home: 1.5
+  loanacct: 1.5
+  assets: 1.5
+  debts: 1.5
+  networth: 1.5
+  change: 1.5
+  investments: 1.5
