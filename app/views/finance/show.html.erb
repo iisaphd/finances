@@ -36,7 +36,7 @@
     <%= column_chart [ 
 	{ name: "Assets",  data: @networth.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:assets) } ], 
 	library: { curveType: "function", colors: ["green"]},  
-	stacked:false, discrete:true, ytitle: "$s"
+	stacked:false, discrete:true, ytitle: "$s", min: 750000
 
 %>
     <h4 align="center">Debts</h4>
@@ -50,7 +50,7 @@
     <%= column_chart [ 
 	{ name: "Net Worth",  data: @networth.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:networth) } ], 
 	library: { curveType: "function", colors: ["green"]},  
-	stacked:false, discrete:true, ytitle: "$s"
+	stacked:false, discrete:true, ytitle: "$s", min: 750000
 
 %>
 
@@ -60,7 +60,7 @@
 	{ name: "ESPP",  data: @accounts.order(:dateofrecord).limit(50).group(:dateofrecord).sum(:ssbacct) },
 	{ name: "Loan",  data: @accounts.order(:dateofrecord).limit(50).group(:dateofrecord).sum(:loanacct) } ], 
 	library: { curveType: "function", colors: ["green", "blue", "orange"]},  
-	stacked:true, discrete:true, ytitle: "$s"
+	stacked:true, discrete:true, ytitle: "$s", min: 375000
 
 %>
 
@@ -85,7 +85,7 @@ This retirement plan assumes savings for five years and is based on the 401k mas
 <p>&nbsp;</p>
 <hr>
     <h4 align="center">Assets</h4>
-This retirement plan assumes no savings and is based on the 401k master plan and $95k COL. If the COL is $90K, the value of assests will remain above $0.
+This retirement plan assumes no savings and is based on the 401k master plan and $90k COL. 
     <%= column_chart [ 
 	{ name: "Assets",  data: @plan2s.group(:age).sum(:assets) }, 
 	{ name: "COL",  data: @plan2s.group(:age).sum(:col) } ],
@@ -174,6 +174,7 @@ This retirement plan assumes savings and is based on the 401k pessimistic plan a
 
 	workbook = RubyXL::Parser.parse("./finance.xlsx")
 	sheet_budget = workbook["Analysis"] 
+
 
 	om_row = 21	# 0 based, modify this based on the particular spreadsheet "row 5 = 4"
 	om_column = 0	# 0 based, modify this based on the particular spreadsheet "column h = 7"

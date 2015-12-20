@@ -16,7 +16,7 @@ class DatabaseController < ApplicationController
 	Plan3.delete_all
 	%x[rake import_plan3:create_plan3]
 	Budget.delete_all
-	%x[rake import_budgets:create_budgets]
+	%x[rake import_budget:create_budget]
 
   end
 end
