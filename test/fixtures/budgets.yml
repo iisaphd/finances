@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  year: 1
+  taxes: 1.5
+  investment401k: 1.5
+  investmentespp: 1.5
+  healthinsurance: 1.5
+  expenses: 1.5
+  housing: 1.5
+  remaining: 1.5
+  bonus: 1.5
+
+two:
+  year: 1
+  taxes: 1.5
+  investment401k: 1.5
+  investmentespp: 1.5
+  healthinsurance: 1.5
+  expenses: 1.5
+  housing: 1.5
+  remaining: 1.5
+  bonus: 1.5

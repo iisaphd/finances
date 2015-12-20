@@ -7,5 +7,6 @@ class FinanceController < ApplicationController
 	@plan1s = Plan1.all
 	@plan2s = Plan2.all
 	@plan3s = Plan3.all
+	@budgets = Budget.all
   end
 end

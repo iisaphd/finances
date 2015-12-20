@@ -105,3 +105,66 @@ This retirement plan assumes savings and is based on the 401k pessimistic plan a
 
 %>
 
+<p>&nbsp;</p>
+<hr>
+    <h3 align="center">Budgets</h3>
+
+    <%= column_chart [ 
+	{ name: "401k",  data: @budgets.group(:year).sum(:investment401k) },
+	{ name: "ESPP",  data: @budgets.group(:year).sum(:investmentespp) },
+	{ name: "Remaining",  data: @budgets.group(:year).sum(:remaining) },
+	{ name: "Bonus",  data: @budgets.group(:year).sum(:bonus) },
+	{ name: "Taxes",  data: @budgets.group(:year).sum(:taxes) },
+	{ name: "Insurance",  data: @budgets.group(:year).sum(:healthinsurance) },
+	{ name: "Expenses",  data: @budgets.group(:year).sum(:expenses) },
+	{ name: "Housing",  data: @budgets.group(:year).sum(:housing) }],
+   	library: { colors: ["green", "chartreuse", "darkgreen", "lightgreen", "red", "orange", "pink", "purple" ]},
+	stacked:false, discrete:true, ytitle: "$s", xtitle: "Budgets"
+
+%>
+
+
+
+    <h4>2015</h4>
+    <%= 
+
+	pie_chart({
+		   "401k" => @budgets.where(year: "2015").sum(:investment401k),
+		   "ESPP" => @budgets.where(year: "2015").sum(:investmentespp),
+		   "Remaining" => @budgets.where(year: "2015").sum(:remaining),
+		   "Bonus" => @budgets.where(year: "2015").sum(:bonus),
+		   "Taxes" => @budgets.where(year: "2015").sum(:taxes), 
+		   "Insurance" => @budgets.where(year: "2015").sum(:healthinsurance),
+		   "Expenses" => @budgets.where(year: "2015").sum(:expenses),
+		   "Housing" => @budgets.where(year: "2015").sum(:housing)},
+		   library: { colors: ["green", "chartreuse", "darkgreen", "lightgreen", "red", "orange", "pink", "purple" ]} )
+    %>
+    <h4>2016</h4>
+    <%= 
+
+	pie_chart({
+		   "401k" => @budgets.where(year: "2016").sum(:investment401k),
+		   "ESPP" => @budgets.where(year: "2016").sum(:investmentespp),
+		   "Remaining" => @budgets.where(year: "2016").sum(:remaining),
+		   "Bonus" => @budgets.where(year: "2016").sum(:bonus),
+		   "Taxes" => @budgets.where(year: "2016").sum(:taxes), 
+		   "Insurance" => @budgets.where(year: "2016").sum(:healthinsurance),
+		   "Expenses" => @budgets.where(year: "2016").sum(:expenses),
+		   "Housing" => @budgets.where(year: "2016").sum(:housing)},
+		   library: { colors: ["green", "chartreuse", "darkgreen", "lightgreen", "red", "orange", "pink", "purple" ]} )
+    %>
+    <h4>2017</h4>
+    <%= 
+
+	pie_chart({
+		   "401k" => @budgets.where(year: "2017").sum(:investment401k),
+		   "ESPP" => @budgets.where(year: "2017").sum(:investmentespp),
+		   "Remaining" => @budgets.where(year: "2017").sum(:remaining),
+		   "Bonus" => @budgets.where(year: "2017").sum(:bonus),
+		   "Taxes" => @budgets.where(year: "2017").sum(:taxes), 
+		   "Insurance" => @budgets.where(year: "2017").sum(:healthinsurance),
+		   "Expenses" => @budgets.where(year: "2017").sum(:expenses),
+		   "Housing" => @budgets.where(year: "2017").sum(:housing)},
+		   library: { colors: ["green", "chartreuse", "darkgreen", "lightgreen", "red", "orange", "pink", "purple" ]} )
+    %>
+
