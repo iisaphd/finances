@@ -137,7 +137,7 @@ This retirement plan assumes savings and is based on the 401k pessimistic plan a
 		   "Insurance" => @budgets.where(year: "2015").sum(:healthinsurance),
 		   "Expenses" => @budgets.where(year: "2015").sum(:expenses),
 		   "Housing" => @budgets.where(year: "2015").sum(:housing)},
-		   library: { colors: ["green", "chartreuse", "darkgreen", "lightgreen", "red", "orange", "pink", "purple" ]} )
+		   library: { colors: ["green", "chartreuse", "darkgreen", "lightgreen", "red", "orange", "darkred", "purple" ]} )
     %>
     <h4>2016</h4>
     <%= 
@@ -151,7 +151,7 @@ This retirement plan assumes savings and is based on the 401k pessimistic plan a
 		   "Insurance" => @budgets.where(year: "2016").sum(:healthinsurance),
 		   "Expenses" => @budgets.where(year: "2016").sum(:expenses),
 		   "Housing" => @budgets.where(year: "2016").sum(:housing)},
-		   library: { colors: ["green", "chartreuse", "darkgreen", "lightgreen", "red", "orange", "pink", "purple" ]} )
+		   library: { colors: ["green", "chartreuse", "darkgreen", "lightgreen", "red", "orange", "darkred", "purple" ]} )
     %>
     <h4>2017</h4>
     <%= 
@@ -165,6 +165,35 @@ This retirement plan assumes savings and is based on the 401k pessimistic plan a
 		   "Insurance" => @budgets.where(year: "2017").sum(:healthinsurance),
 		   "Expenses" => @budgets.where(year: "2017").sum(:expenses),
 		   "Housing" => @budgets.where(year: "2017").sum(:housing)},
-		   library: { colors: ["green", "chartreuse", "darkgreen", "lightgreen", "red", "orange", "pink", "purple" ]} )
+		   library: { colors: ["green", "chartreuse", "darkgreen", "lightgreen", "red", "orange", "darkred", "purple" ]} )
     %>
+    <h4>Post 2016 Budget Breakdown</h4>
+
+<%=
+	require 'rubyXL'
+
+	workbook = RubyXL::Parser.parse("./finance.xlsx")
+	sheet_budget = workbook["Analysis"] 
+
+	om_row = 21	# 0 based, modify this based on the particular spreadsheet "row 5 = 4"
+	om_column = 0	# 0 based, modify this based on the particular spreadsheet "column h = 7"
+
+	budget = Hash.new
+	label = sheet_budget[om_row][om_column].value
+	value = sheet_budget[om_row][om_column+1].value
+	budget.store(label,value)
+	label = sheet_budget[om_row+1][om_column].value
+	value = sheet_budget[om_row+1][om_column+1].value
+	budget.store(label,value)
+	label = sheet_budget[om_row+2][om_column].value
+	value = sheet_budget[om_row+2][om_column+1].value
+	budget.store(label,value)
+	label = sheet_budget[om_row+3][om_column].value
+	value = sheet_budget[om_row+3][om_column+1].value
+	budget.store(label,value)
+	budget_array = budget.to_a
+	@options = {"library" => {"pieSliceText" => "value", "tooltip" => {"text" => "value"},colors: ["darkred", "green", "chartreuse", "red"]}}
+	pie_chart budget_array, @options
+
+%>
 
