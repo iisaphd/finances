@@ -1,36 +1,4 @@
 <h3>Matt's Financial Dashboard</h3>
-    <h4 align="center">Total Savings Over Time</h4>
-    <%= column_chart [ 
-	{ name: "Total Value", data: @savings.order(:transactiondate).group(:transactiondate).sum(:totalsavings) } ], 
-	library: { curveType: "function", colors: ["green"]},  
-	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date"
-
-%>
-<p>&nbsp;</p>
-<hr>
-<p>&nbsp;</p>
-    <h4 align="center">Retirement Value</h4>
-    <%= column_chart [ 
-	{ name: "Total Value", data: @savings.order(:transactiondate).group(:transactiondate).sum(:totalvalue) } ], 
-	library: { curveType: "function", colors: ["green"]},  
-	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date"
-
-%>
-<p>&nbsp;</p>
-<hr>
-<p>&nbsp;</p>
-    <h4 align="center">Transactions</h4>
-    <%= column_chart [ 
-	{ name: "Amount",  data: @savings.order(:transactiondate).group(:transactiondate).sum(:amount) } ], 
-	library: { curveType: "function", colors: ["green"]},  
-	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date"
-
-%>
-
-<p>&nbsp;</p>
-<hr>
-<p>&nbsp;</p>
-
     <h4 align="center">Debt Payoff</h4>
     <%= column_chart [ 
 	{ name: "HELOC",  data: @debts.order(:transactiondate).group(:transactiondate).sum(:heloc) },
@@ -95,6 +63,38 @@
 	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date"
 
 %>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+
+    <h4 align="center">Total Savings Over Time</h4>
+    <%= column_chart [ 
+	{ name: "Total Value", data: @savings.order(:transactiondate).group(:transactiondate).sum(:totalsavings) } ], 
+	library: { curveType: "function", colors: ["green"]},  
+	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date"
+
+%>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+    <h4 align="center">Retirement Value</h4>
+    <%= column_chart [ 
+	{ name: "Total Value", data: @savings.order(:transactiondate).group(:transactiondate).sum(:totalvalue) } ], 
+	library: { curveType: "function", colors: ["green"]},  
+	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date"
+
+%>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
+    <h4 align="center">Transactions</h4>
+    <%= column_chart [ 
+	{ name: "Amount",  data: @savings.order(:transactiondate).group(:transactiondate).sum(:amount) } ], 
+	library: { curveType: "function", colors: ["green"]},  
+	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date"
+
+%>
+
 <p>&nbsp;</p>
 <hr>
 <p>&nbsp;</p>
