@@ -3,24 +3,33 @@
     <%= column_chart [ 
 	{ name: "Total Value", data: @savings.order(:transactiondate).group(:transactiondate).sum(:totalsavings) } ], 
 	library: { curveType: "function", colors: ["green"]},  
-	stacked:true, discrete:true, ytitle: "$s"
+	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date"
 
 %>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
     <h4 align="center">Retirement Value</h4>
     <%= column_chart [ 
 	{ name: "Total Value", data: @savings.order(:transactiondate).group(:transactiondate).sum(:totalvalue) } ], 
 	library: { curveType: "function", colors: ["green"]},  
-	stacked:true, discrete:true, ytitle: "$s"
+	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date"
 
 %>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
     <h4 align="center">Transactions</h4>
     <%= column_chart [ 
 	{ name: "Amount",  data: @savings.order(:transactiondate).group(:transactiondate).sum(:amount) } ], 
 	library: { curveType: "function", colors: ["green"]},  
-	stacked:true, discrete:true, ytitle: "$s"
+	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date"
 
 %>
 
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
 
     <h4 align="center">Debt Payoff</h4>
     <%= column_chart [ 
@@ -28,31 +37,43 @@
 	{ name: "Escrow",  data: @debts.order(:transactiondate).group(:transactiondate).sum(:escrowdebt) },
 	{ name: "401k",  data: @debts.order(:transactiondate).group(:transactiondate).sum(:loanremaining) } ], 
 	library: { curveType: "function", colors: ["red", "blue", "orange"]},  
-	stacked:true, discrete:true, ytitle: "$s"
+	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date", min: 0
 
 %>
 
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
     <h4 align="center">Assets</h4>
     <%= column_chart [ 
 	{ name: "Assets",  data: @networth.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:assets) } ], 
 	library: { curveType: "function", colors: ["green"]},  
-	stacked:false, discrete:true, ytitle: "$s", min: 750000
+	stacked:false, discrete:true, ytitle: "$s", min: 750000, xtitle: "Date"
 
 %>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
     <h4 align="center">Debts</h4>
     <%= column_chart [ 
 	{ name: "Debts",  data: @networth.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:debts) } ], 
 	library: { curveType: "function", colors: ["red"]},  
-	stacked:false, discrete:true, ytitle: "$s"
+	stacked:false, discrete:true, ytitle: "$s", xtitle: "Date"
 
 %>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
     <h4 align="center">Net Worth</h4>
     <%= column_chart [ 
 	{ name: "Net Worth",  data: @networth.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:networth) } ], 
 	library: { curveType: "function", colors: ["green"]},  
-	stacked:false, discrete:true, ytitle: "$s", min: 750000
+	stacked:false, discrete:true, ytitle: "$s", min: 750000, xtitle: "Date"
 
 %>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
 
     <h4 align="center">Investments</h4>
     <%= column_chart [ 
@@ -60,18 +81,24 @@
 	{ name: "ESPP",  data: @accounts.order(:dateofrecord).limit(50).group(:dateofrecord).sum(:ssbacct) },
 	{ name: "Loan",  data: @accounts.order(:dateofrecord).limit(50).group(:dateofrecord).sum(:loanacct) } ], 
 	library: { curveType: "function", colors: ["green", "blue", "orange"]},  
-	stacked:true, discrete:true, ytitle: "$s", min: 375000
+	stacked:true, discrete:true, ytitle: "$s", min: 375000, xtitle: "Date"
 
 %>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
 
     <h4 align="center">Change</h4>
     <%= column_chart [ 
 	{ name: "Daily Change",  data: @accounts.order(:dateofrecord).limit(50).group(:dateofrecord).sum(:change) } ], 
 	library: { curveType: "function", colors: ["black"]},  
-	stacked:true, discrete:true, ytitle: "$s"
+	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date"
 
 %>
+<p>&nbsp;</p>
 <hr>
+<p>&nbsp;</p>
+
 <h3>Retirement Plans</h3>
     <h4 align="center">Assets</h4>
 This retirement plan assumes savings for five years and is based on the 401k master plan and $108k COL
@@ -84,6 +111,7 @@ This retirement plan assumes savings for five years and is based on the 401k mas
 %>
 <p>&nbsp;</p>
 <hr>
+<p>&nbsp;</p>
     <h4 align="center">Assets</h4>
 This retirement plan assumes no savings and is based on the 401k master plan and $90k COL. 
     <%= column_chart [ 
@@ -95,6 +123,7 @@ This retirement plan assumes no savings and is based on the 401k master plan and
 %>
 <p>&nbsp;</p>
 <hr>
+<p>&nbsp;</p>
     <h4 align="center">Assets</h4>
 This retirement plan assumes savings and is based on the 401k pessimistic plan and $95k COL
     <%= column_chart [ 
@@ -107,6 +136,7 @@ This retirement plan assumes savings and is based on the 401k pessimistic plan a
 
 <p>&nbsp;</p>
 <hr>
+<p>&nbsp;</p>
     <h3 align="center">Budgets</h3>
 
     <%= column_chart [ 
@@ -124,6 +154,9 @@ This retirement plan assumes savings and is based on the 401k pessimistic plan a
 %>
 
 
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
 
     <h4>2015</h4>
     <%= 
@@ -139,6 +172,9 @@ This retirement plan assumes savings and is based on the 401k pessimistic plan a
 		   "Housing" => @budgets.where(year: "2015").sum(:housing)},
 		   library: { colors: ["green", "chartreuse", "darkgreen", "lightgreen", "red", "orange", "darkred", "purple" ]} )
     %>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
     <h4>2016</h4>
     <%= 
 
@@ -153,6 +189,9 @@ This retirement plan assumes savings and is based on the 401k pessimistic plan a
 		   "Housing" => @budgets.where(year: "2016").sum(:housing)},
 		   library: { colors: ["green", "chartreuse", "darkgreen", "lightgreen", "red", "orange", "darkred", "purple" ]} )
     %>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
     <h4>2017</h4>
     <%= 
 
@@ -167,6 +206,9 @@ This retirement plan assumes savings and is based on the 401k pessimistic plan a
 		   "Housing" => @budgets.where(year: "2017").sum(:housing)},
 		   library: { colors: ["green", "chartreuse", "darkgreen", "lightgreen", "red", "orange", "darkred", "purple" ]} )
     %>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
     <h4>Post 2016 Budget Breakdown</h4>
 
 <%=
@@ -197,4 +239,7 @@ This retirement plan assumes savings and is based on the 401k pessimistic plan a
 	pie_chart budget_array, @options
 
 %>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
 <a href="/database/clear">Reload the database</a>
