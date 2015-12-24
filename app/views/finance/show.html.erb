@@ -16,7 +16,7 @@
     <%= column_chart [ 
 	{ name: "Assets",  data: @networth.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:assets) } ], 
 	library: { curveType: "function", colors: ["green"]},  
-	stacked:false, discrete:true, ytitle: "$s", min: 750000, xtitle: "Date"
+	stacked:false, discrete:true, ytitle: "$s", min: 780000, xtitle: "Date"
 
 %>
 <p>&nbsp;</p>
@@ -36,7 +36,7 @@
     <%= column_chart [ 
 	{ name: "Net Worth",  data: @networth.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:networth) } ], 
 	library: { curveType: "function", colors: ["green"]},  
-	stacked:false, discrete:true, ytitle: "$s", min: 750000, xtitle: "Date"
+	stacked:false, discrete:true, ytitle: "$s", min: 760000, xtitle: "Date"
 
 %>
 <p>&nbsp;</p>
