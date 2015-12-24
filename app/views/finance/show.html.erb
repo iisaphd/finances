@@ -8,6 +8,12 @@
 	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date", min: 0
 
 %>
+    <%= column_chart [ 
+	{ name: "Loan Funds",  data: @debts.order(:transactiondate).group(:transactiondate).sum(:loanfunds) }], 
+	library: { curveType: "function", colors: ["green"]},  
+	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date", max: 50000
+
+%>
 
 <p>&nbsp;</p>
 <hr>
