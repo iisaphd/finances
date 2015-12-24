@@ -109,8 +109,7 @@
     <h4 align="center">Assets</h4>
 This retirement plan assumes savings for five years and is based on the 401k master plan and $108k COL
     <%= column_chart [ 
-	{ name: "Assets",  data: @plan1s.group(:age).sum(:assets) },
-	{ name: "COL",  data: @plan1s.group(:age).sum(:col) } ], 
+	{ name: "Assets",  data: @plan1s.group(:age).sum(:assets) }], 
 	library: { curveType: "function", colors: ["green"]},  
 	stacked:false, discrete:true, ytitle: "$s", xtitle: "Age"
 
@@ -121,8 +120,7 @@ This retirement plan assumes savings for five years and is based on the 401k mas
     <h4 align="center">Assets</h4>
 This retirement plan assumes no savings and is based on the 401k master plan and $90k COL. 
     <%= column_chart [ 
-	{ name: "Assets",  data: @plan2s.group(:age).sum(:assets) }, 
-	{ name: "COL",  data: @plan2s.group(:age).sum(:col) } ],
+	{ name: "Assets",  data: @plan2s.group(:age).sum(:assets) }],
 	library: { curveType: "function", colors: ["green"]},  
 	stacked:false, discrete:true, ytitle: "$s", xtitle: "Age"
 
@@ -133,8 +131,7 @@ This retirement plan assumes no savings and is based on the 401k master plan and
     <h4 align="center">Assets</h4>
 This retirement plan assumes savings and is based on the 401k pessimistic plan and $95k COL
     <%= column_chart [ 
-	{ name: "Assets",  data: @plan3s.group(:age).sum(:assets) }, 
-	{ name: "COL",  data: @plan3s.group(:age).sum(:col) } ],
+	{ name: "Assets",  data: @plan3s.group(:age).sum(:assets) }],
 	library: { curveType: "function", colors: ["green"]},  
 	stacked:false, discrete:true, ytitle: "$s", xtitle: "Age"
 
