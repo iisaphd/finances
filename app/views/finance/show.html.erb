@@ -51,9 +51,9 @@
 
     <h4 align="center">Investments</h4>
     <%= column_chart [ 
-	{ name: "AON",  data: @accounts.order(:dateofrecord).limit(50).group(:dateofrecord).sum(:aonacct) },
-	{ name: "ESPP",  data: @accounts.order(:dateofrecord).limit(50).group(:dateofrecord).sum(:ssbacct) },
-	{ name: "Loan",  data: @accounts.order(:dateofrecord).limit(50).group(:dateofrecord).sum(:loanacct) } ], 
+	{ name: "AON",  data: @accounts.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:aonacct) },
+	{ name: "ESPP",  data: @accounts.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:ssbacct) },
+	{ name: "Loan",  data: @accounts.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:loanacct) } ], 
 	library: { curveType: "function", colors: ["green", "blue", "orange"]},  
 	stacked:true, discrete:true, ytitle: "$s", min: 375000, xtitle: "Date"
 
