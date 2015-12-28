@@ -20,7 +20,7 @@
 <p>&nbsp;</p>
     <h4 align="center">Assets</h4>
     <%= column_chart [ 
-	{ name: "Assets",  data: @networth.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:assets) } ], 
+	{ name: "Assets",  data: @networth.order(:dateofrecord).limit(70).group(:dateofrecord).sum(:assets) } ], 
 	library: { curveType: "function", colors: ["green"]},  
 	stacked:false, discrete:true, ytitle: "$s", min: 780000, xtitle: "Date"
 
@@ -30,7 +30,7 @@
 <p>&nbsp;</p>
     <h4 align="center">Debts</h4>
     <%= column_chart [ 
-	{ name: "Debts",  data: @networth.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:debts) } ], 
+	{ name: "Debts",  data: @networth.order(:dateofrecord).limit(70).group(:dateofrecord).sum(:debts) } ], 
 	library: { curveType: "function", colors: ["red"]},  
 	stacked:false, discrete:true, ytitle: "$s", xtitle: "Date"
 
@@ -40,7 +40,7 @@
 <p>&nbsp;</p>
     <h4 align="center">Net Worth</h4>
     <%= column_chart [ 
-	{ name: "Net Worth",  data: @networth.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:networth) } ], 
+	{ name: "Net Worth",  data: @networth.order(:dateofrecord).limit(70).group(:dateofrecord).sum(:networth) } ], 
 	library: { curveType: "function", colors: ["green"]},  
 	stacked:false, discrete:true, ytitle: "$s", min: 760000, xtitle: "Date"
 
@@ -51,9 +51,9 @@
 
     <h4 align="center">Investments</h4>
     <%= column_chart [ 
-	{ name: "AON",  data: @accounts.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:aonacct) },
-	{ name: "ESPP",  data: @accounts.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:ssbacct) },
-	{ name: "Loan",  data: @accounts.order(:dateofrecord).limit(60).group(:dateofrecord).sum(:loanacct) } ], 
+	{ name: "AON",  data: @accounts.order(:dateofrecord).limit(70).group(:dateofrecord).sum(:aonacct) },
+	{ name: "ESPP",  data: @accounts.order(:dateofrecord).limit(70).group(:dateofrecord).sum(:ssbacct) },
+	{ name: "Loan",  data: @accounts.order(:dateofrecord).limit(70).group(:dateofrecord).sum(:loanacct) } ], 
 	library: { curveType: "function", colors: ["green", "blue", "orange"]},  
 	stacked:true, discrete:true, ytitle: "$s", min: 375000, xtitle: "Date"
 
@@ -64,7 +64,7 @@
 
     <h4 align="center">Change</h4>
     <%= column_chart [ 
-	{ name: "Daily Change",  data: @accounts.order(:dateofrecord).limit(50).group(:dateofrecord).sum(:change) } ], 
+	{ name: "Daily Change",  data: @accounts.order(:dateofrecord).limit(70).group(:dateofrecord).sum(:change) } ], 
 	library: { curveType: "function", colors: ["black"]},  
 	stacked:true, discrete:true, ytitle: "$s", xtitle: "Date"
 
