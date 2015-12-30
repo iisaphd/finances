@@ -16,6 +16,7 @@ sheet_networth.each { |row|
 	col_networth = false
 	col_change = false
 	col_changerate = false
+	col_pctnw = false
 
 	#col_escrowowed = false
 	#col_loanfunds = false
@@ -24,21 +25,21 @@ sheet_networth.each { |row|
 	row && row.cells.each { |cell|
 		#puts cell.value
 		if first == true && cell.value == "changerate" 
-			puts "do nothing"
+			#puts "do nothing"
 			first = false
 		elsif col_dateofrecord == true && first == false 
 			new_data.dateofrecord = cell && cell.value
-			puts new_data.dateofrecord			
+			#puts new_data.dateofrecord			
 			col_dateofrecord = false
 			col_assets = true
 		elsif col_assets == true && first == false
 			new_data.assets = cell && cell.value
-			puts new_data.assets			
+			#puts new_data.assets			
 			col_assets = false
 			col_debts = true
 		elsif col_debts == true && first == false
 			new_data.debts = cell && cell.value
-			puts new_data.debts			
+			#puts new_data.debts			
 			col_debts = false
 			col_networth = true
 		elsif col_networth == true && first == false
@@ -53,7 +54,12 @@ sheet_networth.each { |row|
 			col_changerate = true
 		elsif col_changerate == true && first == false
 			new_data.changerate = cell && cell.value
-			#puts new_data.changerate			
+			puts new_data.changerate			
+			col_changerate = false
+			col_pctnw = true
+		elsif col_pctnw == true && first == false
+			new_data.pctnw = cell && cell.value
+			puts new_data.pctnw			
 			new_data.save
 		end
 	}

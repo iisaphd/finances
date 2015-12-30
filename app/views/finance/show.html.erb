@@ -48,6 +48,16 @@
 <p>&nbsp;</p>
 <hr>
 <p>&nbsp;</p>
+    <h4 align="center">Debt as % of Net Worth</h4>
+    <%= column_chart [ 
+	{ name: "Debt %",  data: @networth.order(:dateofrecord).limit(70).group(:dateofrecord).sum(:pctnw) } ], 
+	library: { curveType: "function", colors: ["green"]},  
+	stacked:false, discrete:true, ytitle: "% NW", xtitle: "Date"
+
+%>
+<p>&nbsp;</p>
+<hr>
+<p>&nbsp;</p>
 
     <h4 align="center">Investments</h4>
     <%= column_chart [ 
